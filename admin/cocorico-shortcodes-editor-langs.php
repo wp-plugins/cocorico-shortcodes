@@ -37,6 +37,8 @@ function coco_shortcodes_tinymce_translation() {
         'message_add'			=> _x('Add a message box', 'tinymce popup title', 'cocoshortcodes'),
         
         'message_type'			=> _x('Type', 'tinymce popup attribute label', 'cocoshortcodes'),
+        'message_classic'		=> _x('Classic', 'tinymce popup select label', 'cocoshortcodes'),
+        'message_classic_value'	=> _x('classic', 'shortcode attribute value', 'cocoshortcodes'),
         'message_info'			=> _x('Info', 'tinymce popup select label', 'cocoshortcodes'),
         'message_info_value'	=> _x('info', 'shortcode attribute value', 'cocoshortcodes'),
         'message_alert'			=> _x('Alert', 'tinymce popup select label', 'cocoshortcodes'),

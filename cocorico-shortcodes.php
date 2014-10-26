@@ -3,7 +3,7 @@
 Plugin Name: Cocorico Shortcodes
 Plugin URI: https://www.themesdefrance.fr/plugins/cocorico-shortcodes
 Description: Cocorico Shortcodes adds a useful set of shortcodes to enhance your WordPress powered website. Our shortcodes are fully internationalized.
-Version: 1.0.0
+Version: 1.0.1
 Author: Themes de France
 Author URI: https://www.themesdefrance.fr
 Text Domain: cocoshortcodes
@@ -54,31 +54,26 @@ if (!function_exists('coco_shortcodes_enqueue')){
 }
 add_action('wp_enqueue_scripts', 'coco_shortcodes_enqueue');
 
-/* wpautop fix */
-remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'wpautop' , 12);
+// Enable shortcodes in widgets
+add_filter('widget_text', 'do_shortcode');
+
+// Fix p and br tags (thanks to WP Explorer)
+if( !function_exists('coco_shortcodes_fix') ) {
+	function coco_shortcodes_fix($content){
+		$array = array (
+			'<p>[' => '[', 
+			']</p>'	=> ']', 
+			']<br />' => ']',
+			']<br>'	=> ']'
+		);
+		$content = strtr($content, $array);
+		return $content;
+	}
+}
+add_filter('the_content', 'coco_shortcodes_fix');
 
 // Load TinyMce Button
 require_once('admin/cocorico-shortcodes-editor.php');
 
 // Load the magic :)
 require_once('cocorico-shortcodes-library.php');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

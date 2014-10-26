@@ -89,6 +89,9 @@ if (!function_exists('coco_shortcodes_message')){
 		$classes = 'cs_message ';
 		
 		switch($type){
+			case _x('classic', 'shortcode attribute value', 'cocoshortcodes') :
+				$classes .= 'cs_message_classic';
+			break;
 			case _x('info', 'shortcode attribute value', 'cocoshortcodes') :
 				$classes .= 'cs_message_info';
 			break;
