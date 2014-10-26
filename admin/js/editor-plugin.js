@@ -124,7 +124,10 @@
 				                body: [	{	type: 'listbox',
 					                    	name: 'message_type',
 					                    	label: editor.getLang('coco_shortcodes_tinymce.message_type'),
-					                    	values:[	{	text: editor.getLang('coco_shortcodes_tinymce.message_info'),
+					                    	values:[	{	text: editor.getLang('coco_shortcodes_tinymce.message_classic'),
+					                    					value: editor.getLang('coco_shortcodes_tinymce.message_classic_value')
+					                    				},
+					                    				{	text: editor.getLang('coco_shortcodes_tinymce.message_info'),
 					                    					value: editor.getLang('coco_shortcodes_tinymce.message_info_value')
 					                    				},
 					                    				{	text: editor.getLang('coco_shortcodes_tinymce.message_alert'),
