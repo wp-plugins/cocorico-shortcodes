@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if(!function_exists('coco_shortcodes_add_tinymce')){
 	function coco_shortcodes_add_tinymce() {
 		global $typenow;
-		if( ! in_array( $typenow, array( 'post', 'page' ) ) )
+		if( ! in_array( $typenow, coco_shortcodes_get_post_types() ) )
         return ;
 		
 	    add_filter( 'mce_external_plugins', 'coco_shortcodes_add_tinymce_plugin' );
@@ -43,4 +43,27 @@ if(!function_exists('coco_shortcodes_tinymce_add_locale')){
 }
 add_filter('mce_external_languages', 'coco_shortcodes_tinymce_add_locale');
 
-
+// Return all post types in an array
+if(! function_exists('coco_shortcodes_get_post_types')){
+	function coco_shortcodes_get_post_types(){
+		
+		global $wp_post_types;
+		
+		$classic_pt = get_post_types( array(
+										'public'=> true,
+										'show_ui' => true,
+										'_builtin' => true
+										));
+										
+		$custom_pt = get_post_types( array(
+										'public'=> true,
+										'show_ui' => true,
+										'_builtin' => false
+										));
+		
+		
+		$allpt = array_merge($classic_pt,$custom_pt);
+		
+		return $allpt;
+	}
+}
